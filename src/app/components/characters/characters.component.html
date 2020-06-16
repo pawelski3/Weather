@@ -1,0 +1,20 @@
+<p>characters works!</p>
+<div (click)="getUv()">uv klik</div>
+
+<hr>
+<div *ngIf="UvCurrent">
+  <p>
+    Data: {{UvCurrent.date_iso | date:"dd.MM.yyyy"}} r.,
+    UV: {{UvCurrent.value}}
+  </p>
+ </div>
+
+<div *ngIf="UV1">
+  <ng-container *ngFor="let item of UV1; index as i;">
+    <p>
+      Data: {{item[0] | date:"dd.MM.yyyy"}} r.,
+      UV: {{item[1]}}
+    </p>
+  </ng-container>
+
+</div>
