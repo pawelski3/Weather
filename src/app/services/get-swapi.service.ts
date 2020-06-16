@@ -28,7 +28,7 @@ export class GetSwapiService {
   getUV() {
     //api.openweathermap.org/data/2.5/uvi/forecast?lat=37.75&lon=-122.37
     let currentUV=this.http.get('https://api.openweathermap.org/data/2.5/uvi?lat=53&lon=22&appid=bf413845fbb4a52d7e157cbfdab5d964')
-    console.log("current ",currentUV)
+    //console.log("current ",currentUV)
     return this.http.get('https://api.openweathermap.org/data/2.5/uvi/forecast?lat=53&lon=22&appid=bf413845fbb4a52d7e157cbfdab5d964&cnt=4')
       .toPromise();
 

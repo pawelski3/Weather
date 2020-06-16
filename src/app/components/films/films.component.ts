@@ -31,13 +31,13 @@ export class FilmsComponent implements OnInit {
     this.http.getForecast(this.location).then(data => {
       console.log(data);
       //this.GeoLat=data.city.coord.lat
-     // this.City = data;
+      this.City = data;
       this.Error = false;
       this.setVariable(data);
       this.getUv();
     }).catch(err => {
       this.Error = "Podaj prawidłową nazwę miejscowości";
-      //this.City = false;
+      this.City = false;
     })
   }
 
