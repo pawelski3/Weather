@@ -1,17 +1,18 @@
-Witaj!
-<nav>
-  <a routerLink="/">Logo</a>
-  <ul>
-    <li><a routerLink="/pogoda" routerLinkActive="active">Pogoda aktualna</a></li>
-    <li><a routerLink='/prognoza'  routerLinkActive="active" >Prognoza</a></li>
-    <li><a routerLink="/uv" routerLinkActive="active">UV</a></li>
-    <li><a routerLink="/statystyki" routerLinkActive="active">Statystyki</a></li>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a routerLink="/" class="navbar-brand" id="logo">Pogoda</a>
+
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" routerLink="/pogoda" routerLinkActive="active">Pogoda aktualna</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink='/prognoza' routerLinkActive="active">Prognoza</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/uv" routerLinkActive="active">Promieniowanie UV</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/statystyki" routerLinkActive="active">Wykresy</a></li>
   </ul>
 </nav>
-{{City}}
+
 <hr>
-<router-outlet ></router-outlet>
-<footer>
-  <hr>
-  {{getDate() | date:"dd.MM.yyyy"}} r.
+<router-outlet></router-outlet>
+<footer class="py-1 bg-dark fixed-bottom">
+  <div class="container">
+    <p class="m-0 text-center text-white">{{getDate() | date:"dd.MM.yyyy"}} r.</p>
+  </div>
 </footer>

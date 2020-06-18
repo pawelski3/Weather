@@ -9,7 +9,9 @@ import { SpeciesComponent } from './components/species/species.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TeximateModule } from 'ngx-teximate';
 
 const routes: Routes = [
   {
@@ -44,9 +46,11 @@ const routes: Routes = [
     SpeciesComponent,
     PageNotFoundComponent,
     MainComponent
+
   ],
   imports: [
-    RouterModule.forRoot(routes), BrowserModule, HttpClientModule, FormsModule
+    RouterModule.forRoot(routes), BrowserModule, HttpClientModule, FormsModule, NgbModule,BrowserAnimationsModule,
+    TeximateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,20 +1,35 @@
-<p>characters works!</p>
-<div (click)="getUv()">uv klik</div>
+<main class="container">
+  <h2 *ngIf="City">
+    <teximate text={{City}} [enter]="enterAnimation"></teximate>
+    <hr>
+  </h2>
 
-<hr>
-<div *ngIf="UvCurrent">
-  <p>
-    Data: {{UvCurrent.date_iso | date:"dd.MM.yyyy"}} r.,
-    UV: {{UvCurrent.value}}
-  </p>
- </div>
 
-<div *ngIf="UV1">
-  <ng-container *ngFor="let item of UV1; index as i;">
-    <p>
-      Data: {{item[0] | date:"dd.MM.yyyy"}} r.,
-      UV: {{item[1]}}
+  <p class="text-justify"><span>Promieniowanie nadfioletowe (ultrafioletowe)</span> - fale elektromagnetyczne o długości od 10 nm do
+    400 nm, niewidzialne dla człowieka. Źródłem promieniowania są m. in. gwiazdy, diody i lampy kwarcowe. Słońce również je emituje, ale ziemska atmosfera pochłania około 97%. Jest wykorzystywane w kryminalistyce i medycynie. Jego nadmiar jest szkodliwy dla człowieka, dlatego stosuje się różnego rodzaju środki zabezpieczające np. kremy i okulary z filtrem UV.
     </p>
-  </ng-container>
 
-</div>
+  <div *ngIf="UvCurrent">
+    <table class="table">
+      <tr class="head">
+        <td>Data</td>
+        <td>UV index</td>
+      </tr>
+      <td>
+        {{UvCurrent.date_iso | date:"dd.MM.yyyy"}}
+      </td>
+      <td>
+        {{UvCurrent.value}}
+      </td>
+      <tr *ngFor="let item of UV1; index as i;">
+        <td>
+          {{item[0] | date:"dd.MM.yyyy"}}
+        </td>
+        <td>
+          {{item[1]}}
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</main>

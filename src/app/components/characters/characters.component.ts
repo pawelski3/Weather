@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetSwapiService } from 'src/app/services/get-swapi.service';
+import { flipInX } from 'ng-animate';
+import { TextAnimation } from 'ngx-teximate';
 
 @Component({
   selector: 'app-characters',
@@ -8,13 +10,14 @@ import { GetSwapiService } from 'src/app/services/get-swapi.service';
 })
 export class CharactersComponent implements OnInit {
 
-
+  City:any;
   UV1 = [];
   UvCurrent: any;
 
   constructor(private http: GetSwapiService) { }
 
   ngOnInit(): void {
+    this.City=this.http.getCityData();
     this.getUv();
 
 
@@ -24,7 +27,7 @@ export class CharactersComponent implements OnInit {
     this.getUvCurrent();
     this.http.getUV().then(data => {
       this.setVariables(data);
-      //console.log("uv z compo: ",data)
+      console.log("uv z compo: ",data)
       //this.UV=data;
     }).catch(err => {
       console.log(err)
@@ -49,5 +52,9 @@ export class CharactersComponent implements OnInit {
     }
   }
 
-
+  enterAnimation: TextAnimation = {
+    animation: flipInX,
+    delay: 50,
+    type: 'letter',
+  };
 }

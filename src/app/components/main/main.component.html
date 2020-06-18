@@ -1,10 +1,32 @@
-<p>main works!</p>
-<header id="MainDiv">
-  <h1>Aktualna pogoda</h1>
+<main class="container">
 
-  <input type="text"  placeholder="podaj nazwę miejscowości" class="form-control">
+<div id="Div">
+
+
+  <input type="text"  [(ngModel)]="location" placeholder="podaj nazwę miejscowości" class="form-control">
   <br>
-  <button class="btn btn-primary" >Sprawdź</button>
 
+  <button class="btn btn-primary" (click)="handleSearch()">Sprawdź</button>
 
-</header>
+</div>
+<div *ngIf="City">
+  <h2>
+    <teximate text={{City.city.name}} [enter]="enterAnimation"></teximate>
+    </h2>
+  <p>Współrzędne geograficzne: {{GeoLat}} N, {{GeoLon}} E</p>
+  <div id="icons">
+  <i class="fa fa-sun-o sun" aria-hidden="true"  *ngIf=(isDay) style="font-size:35px;"></i>
+  <i class="fa fa-moon-o moon" aria-hidden="true" style="color:yellow;" *ngIf=(!isDay) style="font-size:35px;"></i>
+  <div class="cloudDiv"><i class="fa fa-cloud cloud" aria-hidden="true" style="font-size:30px;"></i></div>
+
+  <p>Wschód słońca: {{Sunrise | date:'HH:mm:ss'}}, zachód słońca: {{Sunset | date:'HH:mm:ss'}} </p>
+</div>
+
+  <p>Aktualna temperatura: {{calculate(City.list[0].main.temp)}} &#176;C</p>
+  <p>Opady: {{City.list[0].rain?getRain(City.list[0].rain)+" mm":"brak"}}</p>
+  <p>Prędkośc wiatru: {{City.list[0].wind.speed}} m/s</p>
+  <p>Ciśnienie: {{City.list[0].main.pressure}} hPa</p>
+  <p>Wilgotność: {{City.list[0].main.humidity}} %</p>
+
+</div>
+</main>

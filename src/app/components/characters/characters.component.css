@@ -1,0 +1,52 @@
+
+#content{
+  text-align:center;
+}
+
+
+main{
+  margin-top: 50px;
+  text-align:center;
+}
+
+span{
+  color:#007bff;
+}
+
+
+hr{
+  color: #007bff;
+}
+
+table{
+  width:40%;
+  margin-top:10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+
+}
+.head{
+  font-weight: bold;
+  border-top: 2px solid #007bff;
+  border-bottom: 2px solid #007bff;
+}
+td{
+  text-align: center;
+  border-bottom: 1px solid #007bff;
+
+}
+@media (max-width: 960px) {
+  main{
+    margin-top: 150px;
+  }
+  input{
+    width:100%;
+  }
+  button{
+    width:100%;
+  }
+  footer{
+      display:none;
+  }
+}

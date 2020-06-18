@@ -7,37 +7,43 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GetSwapiService {
 
-  location="Wrocław"
+  CityData: any;
+  WeatherData: any;
+  GeoLat: number;
+  GeoLon: number;
 
   constructor(private http: HttpClient) { }
 
-  // getSwapi() {
-
-  //   return this.http.get('https://swapi.dev/api/films')
-  //     .toPromise();
-
-  // }
 
   getForecast(location) {
-
     return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=' + location + '&appid=bf413845fbb4a52d7e157cbfdab5d964')
       .toPromise();
-
   }
 
   getUV() {
-    //api.openweathermap.org/data/2.5/uvi/forecast?lat=37.75&lon=-122.37
-    let currentUV=this.http.get('https://api.openweathermap.org/data/2.5/uvi?lat=53&lon=22&appid=bf413845fbb4a52d7e157cbfdab5d964')
-    //console.log("current ",currentUV)
-    return this.http.get('https://api.openweathermap.org/data/2.5/uvi/forecast?lat=53&lon=22&appid=bf413845fbb4a52d7e157cbfdab5d964&cnt=4')
+    return this.http.get('https://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + this.GeoLat + '&lon=' + this.GeoLon + '&appid=bf413845fbb4a52d7e157cbfdab5d964&cnt=4')
       .toPromise();
-
   }
 
-  getUvCurrent(){
-     return this.http.get('https://api.openweathermap.org/data/2.5/uvi?lat=53&lon=22&appid=bf413845fbb4a52d7e157cbfdab5d964')
-     .toPromise();
+  getUvCurrent() {
+    return this.http.get('https://api.openweathermap.org/data/2.5/uvi?lat=' + this.GeoLat + '&lon=' + this.GeoLon + '&appid=bf413845fbb4a52d7e157cbfdab5d964')
+      .toPromise();
   }
 
+  setVariable(Weather) {
+    this.CityData = Weather.city.name;
+    this.WeatherData = Weather;
+    this.GeoLat = Weather.city.coord.lat;
+    this.GeoLon = Weather.city.coord.lon;
+    console.log("servis data: ", this.GeoLat, this.GeoLon)
+  }
+
+  getCityData() {
+    return this.CityData;
+  }
+
+  getWeatherData() {
+    return this.WeatherData;
+  }
 
 }

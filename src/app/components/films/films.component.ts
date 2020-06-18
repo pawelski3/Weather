@@ -1,6 +1,8 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { GetSwapiService } from 'src/app/services/get-swapi.service';
 import { ActivatedRoute } from '@angular/router';
+import { flipInX } from 'ng-animate';
+import { TextAnimation } from 'ngx-teximate';
 
 @Component({
   selector: 'app-films',
@@ -22,37 +24,28 @@ export class FilmsComponent implements OnInit {
   constructor(private http: GetSwapiService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.getData()
 
 
   }
 
-  handleSearch() {
-    this.http.getForecast(this.location).then(data => {
-      console.log(data);
-      //this.GeoLat=data.city.coord.lat
-      this.City = data;
-      this.Error = false;
-      this.setVariable(data);
-      this.getUv();
-    }).catch(err => {
-      this.Error = "Podaj prawidłową nazwę miejscowości";
-      this.City = false;
-    })
+  getData(){
+    if(this.http.getWeatherData()){
+    let w =this.http.getCityData()
+    let w1=this.http.getWeatherData()
+    this.City=this.http.getWeatherData()
+    console.log(w,w1)
+    this.Error = false;
+    this.setVariable(this.City);
+    this.getUv();
+    }
   }
 
   setVariable(data){
     this.GeoLat=data.city.coord.lat;
     this.GeoLon=data.city.coord.lon;
-    // data.list.forEach(item=>{
-    //   console.log("item: ",item.rain)
-    //   let w=JSON.stringify(item.rain)?JSON.stringify(item.rain):"brak"
-    //   console.log("key ",w.slice(-5,-1))
-    //   //console.log("key ",Object.keys(item.rain));
-    // })
+
   }
-
-
 
   calculate(k) {
     let tempString = (k - 272.15).toString();
@@ -68,22 +61,22 @@ export class FilmsComponent implements OnInit {
   getUv(){
     this.http.getUV().then(data => {
       console.log(data);
-      //this.GeoLat=data.city.coord.lat
-
     }).catch(err => {
       console.log(err)
     })
   }
 
   getRain(obj){
-    //console.log("GRitem: ",obj)
-      let w=JSON.stringify(obj)//?JSON.stringify(obj):"brak"
-      //console.log("GRkey ",w.slice(-5,-1))
+      let w=JSON.stringify(obj)
       w=w.slice(-5,-1)
-
       return w.startsWith(":")?w.slice(-3):w;
   }
 
+  enterAnimation: TextAnimation = {
+    animation: flipInX,
+    delay: 50,
+    type: 'letter',
+  };
 
 }
 
