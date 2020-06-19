@@ -9,16 +9,14 @@ main{
   color:red;
 }
 
-nav{
-
-
-}
-
-
-
 ul{
   display:flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
+}
+
+li{
+  margin-left: 2px;
+  margin-right: 2px;
 }

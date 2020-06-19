@@ -9,7 +9,9 @@
   <button class="btn btn-primary" (click)="handleSearch()">Sprawdź</button>
 
 </div>
+<div *ngIf="Error" id="error" class="alert alert-danger">{{Error}}</div>
 <div *ngIf="City">
+  <hr>
   <h2>
     <teximate text={{City.city.name}} [enter]="enterAnimation"></teximate>
     </h2>

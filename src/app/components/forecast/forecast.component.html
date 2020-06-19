@@ -1,6 +1,6 @@
 <main class="container">
 
-  <div *ngIf="Error" id="error" class="alert alert-danger">{{Error}}</div>
+  <div *ngIf="!City" id="error" >Prognoza pogody dla wybranej miejscowości</div>
 
   <div id="content" *ngIf="City">
     <h2>

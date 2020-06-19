@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class GetSwapiService {
+export class GetApiService {
 
   CityData: any;
   WeatherData: any;
@@ -13,7 +13,6 @@ export class GetSwapiService {
   GeoLon: number;
 
   constructor(private http: HttpClient) { }
-
 
   getForecast(location) {
     return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=' + location + '&appid=bf413845fbb4a52d7e157cbfdab5d964')
@@ -35,7 +34,6 @@ export class GetSwapiService {
     this.WeatherData = Weather;
     this.GeoLat = Weather.city.coord.lat;
     this.GeoLon = Weather.city.coord.lon;
-    console.log("servis data: ", this.GeoLat, this.GeoLon)
   }
 
   getCityData() {

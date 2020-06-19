@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetSwapiService } from 'src/app/services/get-swapi.service';
+import { GetApiService } from 'src/app/services/get-api.service';
 import { flipInX } from 'ng-animate';
 import { TextAnimation } from 'ngx-teximate';
 
@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
     type: 'letter',
   };
 
-  constructor(private http: GetSwapiService) { }
+  constructor(private http: GetApiService) { }
 
   ngOnInit(): void {
     this.getData()
@@ -42,7 +42,6 @@ export class MainComponent implements OnInit {
     }).catch(err => {
       this.Error = "Podaj prawidłową nazwę miejscowości";
       this.City = false;
-      console.log(err)
     })
   }
 
@@ -58,10 +57,7 @@ export class MainComponent implements OnInit {
 
   getData() {
     if (this.http.getWeatherData()) {
-      let w = this.http.getCityData()
-      let w1 = this.http.getWeatherData()
       this.City = this.http.getWeatherData()
-      console.log(w, w1)
       this.Error = false;
       this.setVariable(this.City);
     }
@@ -73,10 +69,9 @@ export class MainComponent implements OnInit {
   }
 
   getRain(obj) {
-    let w = JSON.stringify(obj)
-    console.log("GRkey ", w)
-    w = w.slice(-5, -1)
-    return w.startsWith(":") ? w.slice(-3) : w;
+    let rain = JSON.stringify(obj)
+    rain = rain.slice(-5, -1)
+    return rain.startsWith(":") ? rain.slice(-3) : rain;
   }
 
 }

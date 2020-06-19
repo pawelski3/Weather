@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+main{
+  margin-top: 50px;
+}
+
+@media (max-width: 960px) {
+  main{
+    margin-top: 150px;
+  }
+  #icons{
+    width:100%;
+  }
+  input{
+    width:100%;
+  }
+  button{
+    width:100%;
+  }
+
+}
