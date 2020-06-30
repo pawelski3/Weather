@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'statystyki',
     component: SpeciesComponent,
   },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+  }
 ];
 
 @NgModule({
