@@ -1,3 +1,4 @@
+import { hashApi } from './config';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,17 +16,17 @@ export class GetApiService {
   constructor(private http: HttpClient) { }
 
   getForecast(location) {
-    return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=' + location + '&appid=bf413845fbb4a52d7e157cbfdab5d964')
+    return this.http.get('https://api.openweathermap.org/data/2.5/forecast?q=' + location + hashApi)
       .toPromise();
   }
 
   getUV() {
-    return this.http.get('https://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + this.GeoLat + '&lon=' + this.GeoLon + '&appid=bf413845fbb4a52d7e157cbfdab5d964&cnt=4')
+    return this.http.get('https://api.openweathermap.org/data/2.5/uvi/forecast?lat=' + this.GeoLat + '&lon=' + this.GeoLon + hashApi+'&cnt=4')
       .toPromise();
   }
 
   getUvCurrent() {
-    return this.http.get('https://api.openweathermap.org/data/2.5/uvi?lat=' + this.GeoLat + '&lon=' + this.GeoLon + '&appid=bf413845fbb4a52d7e157cbfdab5d964')
+    return this.http.get('https://api.openweathermap.org/data/2.5/uvi?lat=' + this.GeoLat + '&lon=' + this.GeoLon + hashApi)
       .toPromise();
   }
 
